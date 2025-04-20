@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import CrimeStatsCard from "@/components/CrimeStatsCard";
 import CrimeChart from "@/components/CrimeChart";
@@ -8,24 +7,42 @@ import Navbar from "@/components/Navbar";
 
 const Index = () => {
   const topCities = getTopCities(5);
-  
+
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="max-h-screen flex flex-col bg-background">
       <Navbar />
-      
+
+      {/* Hero Section */}
+      <div className="relative w-full">
+        <img
+          src="images/home.png"
+          alt="Cyber Crime Prediction"
+          className="w-full h-[650px] object-cover"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
+          <div className="text-center text-white px-6 max-w-3xl">
+            <h1 className="text-4xl font-bold mb-4">City Wise Crime Rate Prediction</h1>
+            <p className="text-lg">
+              Predict future cyber crime trends based on historical data and advanced machine learning models.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Dashboard */}
       <main className="flex-1 container px-4 py-8">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-3xl font-bold">Cyber Crime Dashboard</h1>
           <div className="text-sm text-muted-foreground">Last updated: April 2, 2025</div>
         </div>
-        
+
         <CrimeStatsCard />
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
           <CrimeChart type="line" />
           <CrimeChart type="pie" cityName={topCities[0].city} />
         </div>
-        
+
         <div className="mt-6">
           <Card>
             <CardHeader>
@@ -62,7 +79,7 @@ const Index = () => {
             </CardContent>
           </Card>
         </div>
-        
+
         <div className="mt-12 mb-6 text-center">
           <div className="flex items-center justify-center gap-2 text-muted-foreground">
             <Shield className="h-5 w-5" />
